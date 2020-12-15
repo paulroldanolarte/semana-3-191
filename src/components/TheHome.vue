@@ -23,7 +23,7 @@
     <p>
         <!-- {{user.nombre}} -->
         
-        {{user.username}}
+        {{user.name}}
     </p>
     <p>
         {{user.email}}
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import VueJwtDecode from 'vue-jwt-decode'
 import swal from 'sweetalert';
 export default {
     data(){
@@ -45,11 +46,15 @@ export default {
     },
     methods:{
         getUserDetails(){
-           let user = localStorage.getItem('user');
+        //    let user = localStorage.getItem('user');
            let token = localStorage.getItem('jwt');
+           let user = VueJwtDecode.decode(token);
+           console.log(user);
+        //    console.log(username);
+           
            
            if(token){
-               this.user = JSON.parse(user);
+               this.user = user;
            }
 
         },
