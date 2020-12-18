@@ -87,7 +87,7 @@ export default {
               localStorage.setItem('user', JSON.stringify(user));
               if(token){
                   swal("Éxito", "Login correcto!", "success");
-                  this.$router.push('/home');
+                  this.$router.push('/home').catch(()=>{});
               }
                   
               
